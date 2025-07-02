@@ -19,9 +19,6 @@ def fetch_github_activity(username):
                 commit_counts[date] += 1
             else:
                 commit_counts[date] = 1
-                
-        print("Commit counts per day:")
-        print(commit_counts)
 
         return commit_counts
 
