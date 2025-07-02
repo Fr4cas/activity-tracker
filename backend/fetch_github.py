@@ -11,6 +11,7 @@ def fetch_github_activity(username):
         return response.json()
     
         push_events = [event for event in events if event["type"] == "PushEvent"]
+        commit_dates = [event["created_at"][:10] for event in push_events]
         return push_events
 
     except requests.exceptions.RequestException as e:
