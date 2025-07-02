@@ -8,11 +8,22 @@ def fetch_github_activity(username):
     try:
         response = requests.get(url, headers=headers)
         response.raise_for_status()
-        return response.json()
+        events = response.json()
     
         push_events = [event for event in events if event["type"] == "PushEvent"]
         commit_dates = [event["created_at"][:10] for event in push_events]
-        return push_events
+        
+        commit_counts = {}
+        for date in commit_dates:
+            if date in commit_counts:
+                commit_counts[date] += 1
+            else:
+                commit_counts[date] = 1
+                
+        print("Commit counts per day:")
+        print(commit_counts)
+
+        return commit_counts
 
     except requests.exceptions.RequestException as e:
         print("Error fetching GitHub data:", e)
