@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Heatmap from "./components/Heatmap";
 
 function App() {
   const [commitData, setCommitData] = useState({});
@@ -19,14 +20,7 @@ function App() {
       <h1>GitHub Activity Tracker</h1>
       <p>This app displays commit activity by date.</p>
 
-      <h2>Commits per Day:</h2>
-      <ul>
-        {Object.entries(commitData).map(([date, count]) => (
-          <li key={date}>
-            {date}: {count} commits
-          </li>
-        ))}
-      </ul>
+      <Heatmap data={commitData} />
     </div>
   );
 }
