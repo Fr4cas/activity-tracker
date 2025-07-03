@@ -1,4 +1,5 @@
 import requests
+import json
 
 # Get event data from user profile
 def fetch_github_activity(username):
@@ -25,3 +26,12 @@ def fetch_github_activity(username):
     except requests.exceptions.RequestException as e:
         print("Error fetching GitHub data:", e)
         return []
+    
+if __name__ == "__main__":
+    username = "Fr4cas"
+    data = fetch_github_activity(username)
+    
+    with open("../frontend/public/data.json", "w") as f:
+        json.dump(data, f, indent=2)
+        
+    print("data saved to frontend")
