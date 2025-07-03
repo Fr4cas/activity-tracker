@@ -1,10 +1,18 @@
 import requests
 import json
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Get event data from user profile
 def fetch_github_activity(username):
+    token = os.getenv("GITHUB_TOKEN")
     url = f"https://api.github.com/users/{username}/events/public"
-    headers = {"Accept": "application/vnd.github.v3+json"}
+    headers = {
+        "Accept": "application/vnd.github.v3+json",
+        "Authorization": f"Bearer {token}" if token else None
+        }
 
     try:
         response = requests.get(url, headers=headers)
