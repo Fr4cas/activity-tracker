@@ -4,3 +4,4 @@ __pycache__/
 node_modules/
 dist/
 frontend/public/data.json
+backend/.env
