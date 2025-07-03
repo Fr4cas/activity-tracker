@@ -1,7 +1,20 @@
 import "../css/Heatmap.css";
 
 function Heatmap({ data }) {
-  // Convert object to array and sort by date
+  const today = new Date();
+  const daysToShow = 90;
+  const startDate = new Date(today);
+  startDate.setDate(today.getDate() - daysToShow);
+
+  const allDates = []
+  const current = new Date(startDate);
+
+  while (current <= today) {
+    const dateStr = current.toISOString().slice(0, 10);
+    allDates.push(dateStr);
+    current.setDate(current.getDate() + 1);
+  }
+
   const sortedEntries = Object.entries(data).sort(([a], [b]) => a.localeCompare(b));
 
   // Helper: determine color class by count
