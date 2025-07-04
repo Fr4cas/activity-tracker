@@ -40,16 +40,16 @@ def fetch_github_activity(username):
     
     # push_events = [event for event in all_events if event["type"] == "PushEvent"]
     
-    commit_dates = [event["created_at"][:10] for event in contrib_events]
+    contrib_dates = [event["created_at"][:10] for event in contrib_events]
         
-    commit_counts = {}
-    for date in commit_dates:
-        if date in commit_counts:
-            commit_counts[date] += 1
+    contrib_counts = {}
+    for date in contrib_dates:
+        if date in contrib_counts:
+            contrib_counts[date] += 1
         else:
-            commit_counts[date] = 1
+            contrib_counts[date] = 1
 
-    return commit_counts
+    return contrib_counts
     
 if __name__ == "__main__":
     username = "Fr4cas"
