@@ -51,9 +51,9 @@ function Heatmap({ data }) {
   }
 
   return (
-    <div className="heatmap">
+    <div className="heatmap-grid">
       {weeks.map((week, weekIndex) => (
-        <div key={weekIndex}>
+        <div key={weekIndex} className="week-column">
           {week.map((date, dayIndex) => {
             const count = date && data[date] ? data[date] : 0;
 
