@@ -52,8 +52,10 @@ function Heatmap({ data }) {
 
   return (
     <div className="heatmap">
-      {sortedEntries.map(([date, count]) => (
-        <div key={date} className={`cell ${getColor(count)}`} title={`${date}: ${count} commits`} />
+      {weeks.map((week, weekIndex) => (
+        <div key={weekIndex}>
+          
+        </div>
       ))}
     </div>
   );
