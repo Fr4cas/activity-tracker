@@ -54,7 +54,17 @@ function Heatmap({ data }) {
     <div className="heatmap">
       {weeks.map((week, weekIndex) => (
         <div key={weekIndex}>
-          
+          {week.map((date, dayIndex) => {
+            const count = date && data[date] ? data[date] : 0;
+
+            return (
+              <div
+                key={dayIndex}
+                className={`cell ${getColor(count)}`}
+                title={date ? `${date}: ${count} commits` : ""}
+              />
+            );
+          })}
         </div>
       ))}
     </div>
