@@ -40,6 +40,8 @@ def fetch_github_activity(username):
     # }
     
     contrib_events = all_events
+    dates_seen = [event["created_at"][:10] for event in all_events]
+    print(sorted(set(dates_seen)))
     
     for event in all_events:
         if "2025-06-27" in event["created_at"]:
