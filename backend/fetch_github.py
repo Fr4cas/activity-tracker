@@ -41,6 +41,10 @@ def fetch_github_activity(username):
     
     contrib_events = all_events
     
+    for event in all_events:
+        if "2025-06-27" in event["created_at"]:
+            print(f"{event['type']} - {event['created_at']}")
+    
     # push_events = [event for event in all_events if event["type"] == "PushEvent"]
     
     contrib_dates = [event["created_at"][:10] for event in contrib_events]
