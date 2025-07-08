@@ -27,18 +27,6 @@ def fetch_github_activity(username):
         
         all_events.extend(page_events)
     
-    # contribution_types = {
-    #     "PushEvent",
-    #     "CreateEvent",
-    #     "PullRequestEvent",
-    #     "IssuesEvent",
-    #     "IssueCommentEvent",
-    #     "CreateEvent",
-    #     "ForkEvent",
-    #     "ReleaseEvent",
-    #     "LabelEvent"    
-    # }
-    
     contrib_events = all_events
     dates_seen = [event["created_at"][:10] for event in all_events]
     print(sorted(set(dates_seen)))
