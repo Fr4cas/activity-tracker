@@ -27,16 +27,19 @@ def fetch_github_activity(username):
         
         all_events.extend(page_events)
     
-    contribution_types = {
-        "PushEvent",
-        "PullRequestEvent",
-        "IssuesEvent",
-        "IssueCommentEvent",
-        "CreateEvent",
-        "ForkEvent"    
-    }
+    # contribution_types = {
+    #     "PushEvent",
+    #     "CreateEvent",
+    #     "PullRequestEvent",
+    #     "IssuesEvent",
+    #     "IssueCommentEvent",
+    #     "CreateEvent",
+    #     "ForkEvent",
+    #     "ReleaseEvent",
+    #     "LabelEvent"    
+    # }
     
-    contrib_events = [event for event in all_events if event["type"] in contribution_types]
+    contrib_events = all_events
     
     # push_events = [event for event in all_events if event["type"] == "PushEvent"]
     
