@@ -11,8 +11,8 @@ activity = fetch_github_activity(username)
 # print("Commit dates:")
 # print(commit_dates)
 
-commit_counts = fetch_github_activity(username)
+contrib_counts = fetch_github_activity(username)
 
 print("Commits per day:")
-for date, count in commit_counts.items():
+for date, count in sorted(contrib_counts.items()):
     print(f"{date}: {count}")
