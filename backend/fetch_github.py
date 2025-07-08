@@ -44,8 +44,13 @@ def fetch_github_activity(username):
     print(sorted(set(dates_seen)))
     
     for event in all_events:
-        if "2025-06-27" in event["created_at"]:
-            print(f"{event['type']} - {event['created_at']}")
+        created = event.get("created_at", "")
+        if "2025-06-25" in created or "2025-06-26" in created or "2025-06-27" in created:
+            print("=" * 60)
+            print(f"{event['type']} - {created}")
+            if event["type"] == "PushEvent":
+                for commit in event["payload"].get("commits", []):
+                    print(f"Commit by {commit['author']['name']}: {commit['message']}")
     
     # push_events = [event for event in all_events if event["type"] == "PushEvent"]
     
